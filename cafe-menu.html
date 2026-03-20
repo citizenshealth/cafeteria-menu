@@ -643,16 +643,20 @@ function renderMenu() {
   if (dayNum === 0 || dayNum === 6) {
     banner.className = 'meal-banner closed';
     banner.textContent = 'Cafeteria Closed — Weekend';
-    main.innerHTML = closedHTML("Cafeteria Closed", "Breakfast 7:45–9:30 AM", "Lunch 11:30 AM–1:30 PM");
+    main.innerHTML = closedHTML("Have a Great Weekend!", "", "");
     return;
   }
 
   // Before 7 AM or after 1:30 PM
   if (mealType === 'closed') {
     banner.className = 'meal-banner closed';
+    const isFriday = now.getDay() === 5;
     if (totalMin < 7 * 60) {
       banner.textContent = 'Cafeteria Closed';
       main.innerHTML = closedHTML("Cafeteria Hours", "Breakfast 7:45–9:30 AM", "Lunch 11:30 AM–1:30 PM");
+    } else if (isFriday) {
+      banner.textContent = '';
+      main.innerHTML = closedHTML("Have a Great Weekend!", "", "");
     } else {
       banner.textContent = '';
       main.innerHTML = closedHTML("See You Tomorrow", "Breakfast 7:45–9:30 AM", "Lunch 11:30 AM–1:30 PM");
