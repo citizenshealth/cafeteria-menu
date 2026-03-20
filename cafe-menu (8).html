@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Citizens Health Cafeteria Menu</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #ffffff;
+    --charcoal: #075da6;
+    --text: #000000;
+    --muted: #222222;
+    --light-gray: #333333;
+    --red: #bb1a00;
+    --divider: #e0e0e0;
+    --banner-breakfast: #5a3e00;
+    --banner-lunch: #1a3a52;
+  }
+
+  html, body {
+    width: 100%; height: 100%;
+    background: #ffffff;
+    font-family: 'Barlow', sans-serif;
+    color: var(--text);
+    overflow: hidden;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--charcoal);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 70px;
+    height: 120px;
+    flex-shrink: 0;
+  }
+
+  .header-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .brand-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 34px;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+  }
+
+  .brand-sub {
+    font-size: 16px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-top: 5px;
+  }
+
+  .header-info { text-align: right; }
+
+  .header-date {
+    font-size: 20px;
+    color: #aaa;
+    letter-spacing: 0.04em;
+  }
+
+  .header-clock {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1;
+    margin-top: 2px;
+  }
+
+  /* MEAL BANNER */
+  .meal-banner {
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 17px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+  .meal-banner.breakfast { background: var(--banner-breakfast); }
+  .meal-banner.lunch     { background: var(--banner-lunch); }
+  .meal-banner.closed    { background: #555; }
+
+  /* MAIN */
+  .main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 36px 80px 20px;
+    overflow: hidden;
+  }
+
+  /* PAGE TITLE */
+  .page-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 90px;
+    font-weight: 800;
+    font-style: normal;
+    color: #222222;
+    margin-bottom: 20px;
+    line-height: 1;
+  }
+
+  /* SINGLE COLUMN LAYOUT */
+  .menu-columns {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    max-width: 1400px;
+  }
+
+  .menu-column {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* SECTION HEADING */
+  .col-heading {
+    font-size: 20px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--light-gray);
+    font-weight: 600;
+    padding-bottom: 14px;
+    border-bottom: 3px solid #64c2dc;
+    margin-bottom: 0;
+  }
+
+  /* MENU ROW */
+  .menu-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 16px 0;
+    border-bottom: 1px dotted #ccc;
+    gap: 16px;
+  }
+
+  .menu-row:last-child {
+    border-bottom: 1px dotted #ccc;
+  }
+
+  .row-left {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .row-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 44px;
+    font-weight: 700;
+    font-style: normal;
+    color: #000000;
+    line-height: 1.1;
+  }
+
+  .row-desc {
+    font-size: 26px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  .row-right {
+    display: flex;
+    align-items: baseline;
+    gap: 18px;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .row-cal {
+    font-size: 26px;
+    color: var(--light-gray);
+  }
+
+  .row-price {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 50px;
+    font-weight: 800;
+    color: var(--red);
+    line-height: 1;
+  }
+
+  /* CLOSED STATE */
+  .closed-state {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .closed-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 100px;
+    font-style: normal;
+    font-weight: 800;
+    color: #222222;
+  }
+
+  .closed-msg {
+    font-size: 52px;
+    color: #222222;
+    margin-top: 12px;
+  }
+
+  .closed-hours {
+    font-size: 38px;
+    color: #333333;
+    margin-top: 8px;
+  }
+
+  .footer {
+    background: var(--charcoal);
+    height: 8px;
+    flex-shrink: 0;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .main { animation: fadeIn 0.5s ease both; }
+
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-info">
+    <div class="header-date" id="date-display"></div>
+    <div class="header-clock" id="clock-display"></div>
+  </div>
+</div>
+
+<div class="meal-banner" id="meal-banner">Loading...</div>
+
+<div class="main" id="main-content">
+  <div class="closed-state">
+    <div class="closed-icon">🍽️</div>
+    <div class="closed-title">Loading menu...</div>
+  </div>
+</div>
+
+<div class="footer"></div>
+
+<script>
+// ============================================================
+// MENU DATA — 4 Weeks, Mon–Fri
+// Each day: { breakfast: [...items], lunch: [...items], daily: [...] }
+// ============================================================
+
+const MENU = {
+  1: { // WEEK 1
+    1: { // Monday
+      breakfast: [
+        { name: "Sausage Breakfast Burrito", meta: "Eggs, hashbrowns, sausage & cheese", price: "$2.50 · 350 cal" },
+      ],
+      lunch: [
+        { name: "Chicken Cordon Bleu", price: "$2.50 · 310 cal" },
+        { name: "Beef Pot Roast", price: "$2.50 · 207 cal" },
+        { name: "Tuscan Veg Blend", price: ".75 · 30 cal" },
+        { name: "Buttered Baby Carrots", price: ".75 · 73 cal" },
+        { name: "Mashed Potatoes & Brown Gravy", price: ".75 · 135 cal" },
+        { name: "Roasted Sweet Potato Cubes", price: ".75 · 144 cal" },
+      ]
+    },
+    2: { // Tuesday
+      breakfast: [
+        { name: "Biscuit & Gravy", meta: "1 biscuit serving", price: "$1.50 · 252 cal" },
+      ],
+      lunch: [
+        { name: "Sandwich Bar", price: "$2.50" },
+        { name: "Soup", meta: "Small 12oz", price: "$3.00" },
+        { name: "Soup", meta: "Large 16oz", price: "$3.50" },
+        { name: "Meatloaf", price: "$2.50 · 193 cal" },
+        { name: "Roasted Broccoli", price: ".75 · 30 cal" },
+        { name: "Scalloped Potatoes", price: ".75 · 117 cal" },
+      ]
+    },
+    3: { // Wednesday
+      breakfast: [
+        { name: "Biscuit, Egg, Cheese & Sausage Sandwich", price: "$2.50 · 341 cal" },
+      ],
+      lunch: [
+        { name: "Chicken Alfredo Casserole", price: "$2.50 · 295 cal" },
+        { name: "Philly Cheesesteak Sandwich", price: "$2.50 · 408 cal" },
+        { name: "Malibu Veg Blend", price: ".75 · 30 cal" },
+        { name: "Roasted Asparagus", price: ".75 · 30 cal" },
+        { name: "Potato Tornado", price: "$2.00 · 190 cal" },
+        { name: "Garlic Bread", price: ".75 · 110 cal" },
+      ]
+    },
+    4: { // Thursday
+      breakfast: [
+        { name: "Empanadas", price: "$2.50 · 210 cal" },
+        { name: "Fried Eggs", price: ".75 · 60 cal" },
+      ],
+      lunch: [
+        { name: "Baked Cod", price: "$2.50 · 210 cal" },
+        { name: "Walking Tacos", meta: "Meat, cheese, lettuce, tomatoes", price: "$5.00" },
+        { name: "Capri Veg Blend", price: ".75 · 25 cal" },
+        { name: "Cheesy Hashbrowns", price: ".75 · 215 cal" },
+      ]
+    },
+    5: { // Friday
+      breakfast: [
+        { name: "Blueberry Pancakes", meta: "per pancake", price: ".50" },
+      ],
+      lunch: [
+        { name: "Marinated Pork Ribs", price: "$2.50" },
+        { name: "Tomato Basil Soup", meta: "Small 12oz", price: "$3.00" },
+        { name: "Tomato Basil Soup", meta: "Large 16oz", price: "$3.50" },
+        { name: "Grilled Cheese", price: "$1.50" },
+        { name: "Garden Veg Blend", price: ".75 · 25 cal" },
+        { name: "Spinach Bake", price: ".75 · 217 cal" },
+        { name: "Sweet Potato Fries", price: ".75" },
+      ]
+    }
+  },
+
+  2: { // WEEK 2
+    1: {
+      breakfast: [
+        { name: "English Muffin Sandwich", price: "$2.50 · 470 cal" },
+      ],
+      lunch: [
+        { name: "Grilled Sausage Cuts w/ Onions & Peppers", price: "$2.50 · 338 cal" },
+        { name: "Soup Bar", meta: "Potato Soup / Broc Cheese / White Chicken Chili" },
+        { name: "Soup Bar", meta: "Small 12oz", price: "$3.00" },
+        { name: "Soup Bar", meta: "Large 16oz", price: "$3.50" },
+        { name: "Brussel Sprouts", price: ".75 · 97 cal" },
+        { name: "Malibu Veg Blend", price: ".75 · 30 cal" },
+        { name: "Loaded Mashed Potatoes", price: ".75 · 90 cal" },
+        { name: "Mac n Cheese", price: ".75 · 320 cal" },
+      ]
+    },
+    2: {
+      breakfast: [
+        { name: "Breakfast Frittata", price: ".75 · 90 cal" },
+      ],
+      lunch: [
+        { name: "Orange Chicken", price: "$2.50 · 390 cal" },
+        { name: "BBQ Meatballs", price: "$2.50 · 290 cal" },
+        { name: "Roasted String Beans", price: ".75 · 96 cal" },
+        { name: "Glazed Baby Carrots", price: ".75 · 108 cal" },
+        { name: "White Rice / Fried Rice", price: ".75 · 151/380 cal" },
+        { name: "Egg Roll", price: ".75 · 84 cal" },
+      ]
+    },
+    3: {
+      breakfast: [
+        { name: "Breakfast Tornados", price: "$2.00" },
+        { name: "Fried Eggs", price: ".75 · 60 cal" },
+      ],
+      lunch: [
+        { name: "Grilled Reuben Sandwich", price: "$2.50 · 438 cal" },
+        { name: "Chili Soup with Cheese", meta: "Small 12oz", price: "$3.00 · 300 cal" },
+        { name: "Chili Soup with Cheese", meta: "Large 16oz", price: "$3.50 · 400 cal" },
+        { name: "California Veg Blend", price: ".75 · 30 cal" },
+        { name: "Roasted Asparagus", price: ".75 · 30 cal" },
+        { name: "Baked Potato", meta: "Butter & Sour Cream", price: "$1.25 · 90 cal" },
+        { name: "French Fries", price: ".75" },
+      ]
+    },
+    4: {
+      breakfast: [
+        { name: "French Toast with Warm Fruit Compote", meta: "per slice", price: ".50 · 190 cal" },
+      ],
+      lunch: [
+        { name: "Lemon Pepper Fish", price: "$2.50 · 177 cal" },
+        { name: "Chicken Bacon Penne Pasta Bake", price: "$2.50 · 291 cal" },
+        { name: "Capri Veg Blend", price: ".75 · 25 cal" },
+        { name: "Corn with Black Beans", price: ".75 · 90 cal" },
+        { name: "Rice Pilaf", price: ".75 · 240 cal" },
+        { name: "Garlic Bread", price: ".75 · 110 cal" },
+      ]
+    },
+    5: {
+      breakfast: [
+        { name: "Breakfast Pizza", price: "$2.50 · 230 cal" },
+      ],
+      lunch: [
+        { name: "Chicken Fried Steak", price: "$2.50 · 220 cal" },
+        { name: "Lasagna", price: "$2.50 · 336 cal" },
+        { name: "Spinach Bake", price: ".75 · 217 cal" },
+        { name: "Buttered Green Beans", price: ".75 · 24 cal" },
+        { name: "Mashed Potatoes & Cream Gravy", price: ".75 · 130 cal" },
+        { name: "Garlic Bread", price: ".75 · 110 cal" },
+      ]
+    }
+  },
+
+  3: { // WEEK 3
+    1: {
+      breakfast: [
+        { name: "Breakfast Casserole", price: "$1.50 · 231 cal" },
+        { name: "Bakery Day — Variety of Rolls", meta: "Price varies" },
+      ],
+      lunch: [
+        { name: "Nacho Bar", meta: "Chips, 1 meat, 1 cheese · Beef Taco Meat or Chicken Carnita · Toppings: lettuce, tomato, jalapeños, salsa, sour cream", price: "$5.00" },
+        { name: "Cheese Quesadilla", price: "$2.50 · 317 cal" },
+        { name: "Corn with Black Beans", price: ".75 · 90 cal" },
+        { name: "Fajita Veg Blend", price: ".75 · 25 cal" },
+        { name: "Refried Beans", price: ".75" },
+        { name: "Spanish Rice", price: ".75" },
+      ]
+    },
+    2: {
+      breakfast: [
+        { name: "Biscuit & Gravy", meta: "1 biscuit", price: "$1.50 · 252 cal" },
+      ],
+      lunch: [
+        { name: "Tomato Soup", meta: "Small 12oz", price: "$3.00" },
+        { name: "Tomato Soup", meta: "Large 16oz", price: "$3.50" },
+        { name: "Grilled Cheese Sandwich", price: "$1.50 · 526 cal" },
+        { name: "Chicken Teriyaki", price: "$2.50 · 160 cal" },
+        { name: "Tuscan Veg Blend", price: ".75 · 30 cal" },
+        { name: "Spinach Bake", price: ".75 · 217 cal" },
+        { name: "Lo Mein Noodles", price: ".75 · 157 cal" },
+      ]
+    },
+    3: {
+      breakfast: [
+        { name: "Fried Eggs", price: ".75 · 60 cal" },
+      ],
+      lunch: [
+        { name: "Cheeseburger / Bun", price: "$2.50 · 400 cal" },
+        { name: "Rotisserie Chicken", price: "$2.50 · 172 cal" },
+        { name: "Asparagus Spears", price: ".75 · 30 cal" },
+        { name: "Cheesy Cauliflower", price: ".75 · 49 cal" },
+        { name: "French Fries", price: ".75" },
+        { name: "Baked Beans", price: ".75 · 150 cal" },
+      ]
+    },
+    4: {
+      breakfast: [
+        { name: "Scrambled Eggs", price: ".75 · 134 cal" },
+      ],
+      lunch: [
+        { name: "Shredded Beef Sandwich w/ BBQ Sauce", price: "$2.50 · 350 cal" },
+        { name: "General Tso's Chicken", price: "$2.50 · 170 cal" },
+        { name: "Roasted String Beans", price: ".75 · 25 cal" },
+        { name: "Buttered Corn", price: ".75 · 90 cal" },
+        { name: "Tater Tots", price: ".75 · 160 cal" },
+        { name: "White Rice", price: ".75 · 180 cal" },
+        { name: "Egg Roll", price: ".75 · 140 cal" },
+      ]
+    },
+    5: {
+      breakfast: [
+        { name: "Empanadas", price: "$2.50 · 210 cal" },
+      ],
+      lunch: [
+        { name: "French Dip Sandwich", price: "$2.50 · 397 cal" },
+        { name: "Chicken Cordon Bleu", price: "$2.50 · 310 cal" },
+        { name: "Glazed Baby Carrots", price: ".75 · 115 cal" },
+        { name: "Garden Veg Blend", price: ".75 · 25 cal" },
+        { name: "Cheesy Hashbrowns", price: ".75 · 205 cal" },
+        { name: "Sidewinder French Fries", price: ".75 · 150 cal" },
+      ]
+    }
+  },
+
+  4: { // WEEK 4
+    1: {
+      breakfast: [
+        { name: "Bacon Breakfast Tornado", price: "$2.00 · 180 cal" },
+        { name: "Sausage Breakfast Tornado", price: "$2.00 · 180 cal" },
+        { name: "Scrambled Eggs", price: ".75" },
+      ],
+      lunch: [
+        { name: "Cheeseburger Sliders (2)", price: "$2.50 · 615 cal" },
+        { name: "Chicken Spaghetti", price: "$2.50 · 454 cal" },
+        { name: "Meadow Veg Blend", price: ".75 · 30 cal" },
+        { name: "Baby Carrots with Butter", price: ".75 · 58 cal" },
+        { name: "Baked Potato Casserole", price: ".75 · 347 cal" },
+        { name: "Garlic Bread", price: ".75 · 110 cal" },
+      ]
+    },
+    2: {
+      breakfast: [
+        { name: "Bagel Pizza", price: "$2.00 · 470 cal" },
+      ],
+      lunch: [
+        { name: "Sesame Garlic Beef", price: "$2.50 · 304 cal" },
+        { name: "Orange Chicken", price: "$2.50 · 390 cal" },
+        { name: "Caribbean Veg Blend", price: ".75 · 30 cal" },
+        { name: "Asparagus", price: ".75 · 30 cal" },
+        { name: "Lo Mein Noodles", price: ".75 · 157 cal" },
+        { name: "White Rice", price: ".75 · 152 cal" },
+        { name: "Mini Egg Rolls (2)", price: "$1.00 · 180 cal" },
+      ]
+    },
+    3: {
+      breakfast: [
+        { name: "Breakfast Bowl", price: "$2.50" },
+      ],
+      lunch: [
+        { name: "Beef Pot Roast & Brown Gravy", price: "$2.50 · 193 cal" },
+        { name: "Beef Chili with Cheese", meta: "Small 12oz", price: "$3.00" },
+        { name: "Beef Chili with Cheese", meta: "Large 16oz", price: "$3.50" },
+        { name: "Corn Casserole", price: ".75 · 274 cal" },
+        { name: "4 Way Veg Blend", price: ".75 · 30 cal" },
+        { name: "Onion Petals", price: "$1.00 · 210 cal" },
+        { name: "Cornbread with Butter", price: ".75 · 182 cal" },
+      ]
+    },
+    4: {
+      breakfast: [
+        { name: "Fried Eggs", price: ".75 · 60 cal" },
+        { name: "Waffles with Butter & Syrup", meta: "per 2 waffles", price: ".75 · 140 cal" },
+      ],
+      lunch: [
+        { name: "Cook's Cleanout", meta: "Ask staff for today's selection" },
+        { name: "Empanadas", meta: "Beef & Cheese / Chicken & Cheese / Cheesy Pepperoni", price: "$2.50 each · 200–240 cal" },
+        { name: "Dessert Empanada — Apple", price: "$2.50 · 200 cal" },
+        { name: "Sicilian Veg Blend", price: ".75 · 25 cal" },
+        { name: "Cream Cheese Corn", price: ".75 · 60 cal" },
+      ]
+    },
+    5: {
+      breakfast: [
+        { name: "Southwest Omelet Bake", price: "$1.50 · 304 cal" },
+      ],
+      lunch: [
+        { name: "Beef Brisket / Bun", price: "$3.50 · 214 cal" },
+        { name: "Chicken Tacos (2)", meta: "Lettuce, tomatoes, shredded cheese", price: "$2.50 · 360 cal" },
+        { name: "Spinach Bake", price: ".75 · 225 cal" },
+        { name: "Capri Veg Blend", price: ".75 · 52 cal" },
+        { name: "Mac n Cheese", price: ".75 · 237 cal" },
+        { name: "Spanish Rice", price: ".75 · 95 cal" },
+      ]
+    }
+  }
+};
+
+const DAILY_ITEMS = {
+  breakfast: [
+    { name: "Bacon", meta: "per slice", price: ".50 · 60 cal" },
+    { name: "Sausage Links", meta: "per link", price: ".50 · 170 cal" },
+    { name: "Yogurt Parfait", meta: "per ounce", price: ".45" },
+  ],
+  lunch: [
+    { name: "Salad Bar", meta: "per ounce", price: ".45" },
+  ]
+};
+
+// ============================================================
+// DATE & TIME LOGIC
+// ============================================================
+
+// Week 1 anchor: The Monday of the current week 1.
+// Today is Tuesday March 18, 2026 = Week 1, Tuesday
+// So Monday of this week = March 17, 2026
+const WEEK1_MONDAY = new Date(2026, 2, 16); // March 16, 2026 (month is 0-indexed)
+
+function getWeekAndDay(now) {
+  const msPerDay = 86400000;
+  const dayOfWeek = now.getDay(); // 0=Sun, 1=Mon...5=Fri, 6=Sat
+
+  // Find Monday of the current week
+  const daysFromMonday = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
+  const thisMonday = new Date(now.getFullYear(), now.getMonth(), now.getDate() - daysFromMonday);
+
+  const diffMs = thisMonday - WEEK1_MONDAY;
+  const diffWeeks = Math.floor(diffMs / (7 * msPerDay));
+  const weekNum = ((diffWeeks % 4) + 4) % 4 + 1; // 1–4, cycling
+
+  // dayNum: 1=Mon, 2=Tue, 3=Wed, 4=Thu, 5=Fri
+  const dayNum = dayOfWeek === 0 ? 0 : dayOfWeek; // 0 = Sunday/weekend
+
+  return { weekNum, dayNum };
+}
+
+function getMealType(now) {
+  const h = now.getHours();
+  const m = now.getMinutes();
+  const totalMin = h * 60 + m;
+  const breakfastDisplay = 7 * 60;       // 7:00 AM — start showing breakfast
+  const breakfastEnd     = 9 * 60 + 30;  // 9:30 AM — breakfast ends
+  const lunchPreview     = 9 * 60 + 30;  // 9:30 AM — start showing lunch
+  const lunchEnd         = 13 * 60 + 30; // 1:30 PM — lunch ends
+
+  if (totalMin >= breakfastDisplay && totalMin < breakfastEnd) return 'breakfast';
+  if (totalMin >= lunchPreview && totalMin < lunchEnd) return 'lunch';
+  return 'closed';
+}
+
+function getServiceStatus(now) {
+  const totalMin = now.getHours() * 60 + now.getMinutes();
+  if (totalMin >= 7 * 60 && totalMin < 7 * 60 + 45) return 'breakfast-preview';
+  if (totalMin >= 7 * 60 + 45 && totalMin < 9 * 60 + 30) return 'breakfast-open';
+  if (totalMin >= 9 * 60 + 30 && totalMin < 11 * 60 + 30) return 'lunch-preview';
+  if (totalMin >= 11 * 60 + 30 && totalMin < 13 * 60 + 30) return 'lunch-open';
+  return 'closed';
+}
+
+// ============================================================
+// RENDER
+// ============================================================
+
+const DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+const MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+function formatTime(now) {
+  let h = now.getHours();
+  const m = String(now.getMinutes()).padStart(2, '0');
+  const ampm = h >= 12 ? 'PM' : 'AM';
+  h = h % 12 || 12;
+  return `${h}:${m} ${ampm}`;
+}
+
+function renderMenu() {
+  const now = new Date();
+  const { weekNum, dayNum } = getWeekAndDay(now);
+  const mealType = getMealType(now);
+  const serviceStatus = getServiceStatus(now);
+  const totalMin = now.getHours() * 60 + now.getMinutes();
+
+  // Clock & date
+  document.getElementById('clock-display').textContent = formatTime(now);
+  document.getElementById('date-display').textContent =
+    `${DAY_NAMES[now.getDay()]}, ${MONTH_NAMES[now.getMonth()]} ${now.getDate()}`;
+
+  const banner = document.getElementById('meal-banner');
+  const main = document.getElementById('main-content');
+
+  // Weekend
+  if (dayNum === 0 || dayNum === 6) {
+    banner.className = 'meal-banner closed';
+    banner.textContent = 'Cafeteria Closed — Weekend';
+    main.innerHTML = closedHTML("Cafeteria Closed", "Breakfast 7:45–9:30 AM", "Lunch 11:30 AM–1:30 PM");
+    return;
+  }
+
+  // Before 7 AM or after 1:30 PM
+  if (mealType === 'closed') {
+    banner.className = 'meal-banner closed';
+    if (totalMin < 7 * 60) {
+      banner.textContent = 'Cafeteria Closed';
+      main.innerHTML = closedHTML("Cafeteria Hours", "Breakfast 7:45–9:30 AM", "Lunch 11:30 AM–1:30 PM");
+    } else {
+      banner.textContent = '';
+      main.innerHTML = closedHTML("See You Tomorrow", "Breakfast 7:45–9:30 AM", "Lunch 11:30 AM–1:30 PM");
+    }
+    return;
+  }
+
+  const dayData = MENU[weekNum]?.[dayNum];
+
+  if (!dayData) {
+    banner.className = 'meal-banner closed';
+    banner.textContent = 'Menu Unavailable';
+    main.innerHTML = closedHTML("No Menu Found", "Please check back shortly.", "");
+    return;
+  }
+
+  const items = dayData[mealType] || [];
+  const daily = DAILY_ITEMS[mealType] || [];
+  const allItems = [...items, ...daily];
+
+  banner.className = `meal-banner ${mealType}`;
+  if (serviceStatus === 'breakfast-preview')      banner.textContent = '☀️  Breakfast  ·  Service begins at 7:45 AM';
+  else if (serviceStatus === 'breakfast-open')    banner.textContent = '☀️  Breakfast  ·  Now Serving  ·  Until 9:30 AM';
+  else if (serviceStatus === 'lunch-preview')     banner.textContent = '🍽️  Lunch  ·  Coming up at 11:30 AM';
+  else if (serviceStatus === 'lunch-open')        banner.textContent = '🍽️  Lunch  ·  Now Serving  ·  Until 1:30 PM';
+
+  const dayName = DAY_NAMES[now.getDay()];
+  const mealLabel = mealType === 'breakfast' ? 'Breakfast' : 'Lunch';
+  const pageTitle = serviceStatus.includes('preview')
+    ? `${dayName} ${mealLabel} — Coming Up`
+    : `${dayName} ${mealLabel}`;
+
+  main.innerHTML = `
+    <div class="page-title">${pageTitle}</div>
+    <div class="menu-columns">
+      ${buildColumns(allItems)}
+    </div>
+  `;
+}
+
+function buildColumns(items) {
+  return `
+    <div class="menu-column">
+      <div class="col-heading">Today's Selections</div>
+      ${items.map(rowHTML).join('')}
+    </div>
+  `;
+}
+
+function rowHTML(item) {
+  let priceDisplay = '';
+  let calDisplay = '';
+  if (item.price) {
+    const parts = item.price.split('·');
+    priceDisplay = parts[0].trim().replace('$', '').trim();
+    if (parts[1]) calDisplay = parts[1].trim().replace(' cal', '') + ' cal';
+  }
+  return `
+    <div class="menu-row">
+      <div class="row-left">
+        <div class="row-name">${item.name}</div>
+        ${item.meta ? `<div class="row-desc">${item.meta}</div>` : ''}
+      </div>
+      <div class="row-right">
+        ${calDisplay ? `<span class="row-cal">${calDisplay}</span>` : ''}
+        ${priceDisplay ? `<span class="row-price">${priceDisplay}</span>` : ''}
+      </div>
+    </div>
+  `;
+}
+
+function closedHTML(title, msg, hours) {
+  return `
+    <div class="closed-state">
+      <div class="closed-title">${title}</div>
+      ${msg ? `<div class="closed-msg">${msg}</div>` : ''}
+      ${hours ? `<div class="closed-hours">${hours}</div>` : ''}
+    </div>
+  `;
+}
+
+// Initial render + refresh every 30s
+renderMenu();
+setInterval(() => { renderMenu(); }, 30000);
+
+// Clock ticks every second
+setInterval(() => {
+  const now = new Date();
+  document.getElementById('clock-display').textContent = formatTime(now);
+}, 1000);
+</script>
+</body>
+</html>
