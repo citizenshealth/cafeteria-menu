@@ -666,14 +666,34 @@ function renderMenu() {
 
   const dayData = MENU[weekNum]?.[dayNum];
 
-  if (!dayData) {
+  // ============================================================
+  // DATE OVERRIDES — special menus for specific dates
+  // Format: 'YYYY-M-D': { lunch: [...] }  — auto-expires after that date
+  // ============================================================
+  const DATE_OVERRIDES = {
+    '2026-4-21': {
+      lunch: [
+        { name: "Hamburger / Cheeseburger", price: "$2.50" },
+        { name: "Orange Chicken", price: "$2.50 · 390 cal" },
+        { name: "Roasted String Beans", price: ".75 · 96 cal" },
+        { name: "Glazed Baby Carrots", price: ".75 · 108 cal" },
+        { name: "White Rice / Fried Rice", price: ".75 · 151/380 cal" },
+        { name: "Egg Rolls", price: ".75 · 84 cal" },
+      ]
+    }
+  };
+
+  const todayKey = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`;
+  const override = DATE_OVERRIDES[todayKey];
+
+  if (!dayData && !override) {
     banner.className = 'meal-banner closed';
     banner.textContent = 'Menu Unavailable';
     main.innerHTML = closedHTML("No Menu Found", "Please check back shortly.", "");
     return;
   }
 
-  const items = dayData[mealType] || [];
+  const items = (override?.[mealType] || dayData[mealType]) || [];
   const daily = DAILY_ITEMS[mealType] || [];
   const allItems = [...items, ...daily];
 
