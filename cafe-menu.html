@@ -689,11 +689,31 @@ function renderMenu() {
         { name: "Baked Potato Casserole", price: ".75 · 347 cal" },
         { name: "Garlic Bread", price: ".75 · 110 cal" },
       ]
+    },
+    '2026-5-15': {
+      message: true,
+      title: "🚚 Food Truck Friday!",
+      subtitle: "Happy Healthcare Week!",
+      note: ""
     }
   };
 
   const todayKey = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`;
   const override = DATE_OVERRIDES[todayKey];
+
+  // Full-screen message override
+  if (override?.message) {
+    banner.className = 'meal-banner closed';
+    banner.textContent = '';
+    main.innerHTML = `
+      <div class="closed-state">
+        <div class="closed-title">${override.title}</div>
+        <div class="closed-msg">${override.subtitle}</div>
+        ${override.note ? `<div class="closed-hours">${override.note}</div>` : ''}
+      </div>
+    `;
+    return;
+  }
 
   if (!dayData && !override) {
     banner.className = 'meal-banner closed';
