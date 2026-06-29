@@ -271,278 +271,279 @@
 
 const MENU = {
   1: { // WEEK 1
-    1: { // Monday
+    1: { // Monday — kept from previous menu (override handles today)
       breakfast: [
-        { name: "Sausage Breakfast Burrito", meta: "Eggs, hashbrowns, sausage & cheese", price: "$2.50 · 350 cal" },
+        { name: "French Toast", meta: "per slice, butter & syrup", price: "$1.00" },
       ],
       lunch: [
-        { name: "Chicken Cordon Bleu", price: "$2.50 · 310 cal" },
-        { name: "Beef Pot Roast", price: "$2.50 · 207 cal" },
-        { name: "Tuscan Vegetable Blend", price: ".75 · 30 cal" },
-        { name: "Buttered Baby Carrots", price: ".75 · 73 cal" },
-        { name: "Mashed Potatoes & Brown Gravy", price: ".75 · 135 cal" },
-        { name: "Roasted Sweet Potato Cubes", price: ".75 · 144 cal" },
+        { name: "Rotisserie Chicken", price: "$4.00" },
+        { name: "Swedish Meatballs", price: "$4.00" },
+        { name: "Asparagus Spears", price: "$1.50" },
+        { name: "Bermuda Vegetable Blend", price: "$1.50" },
+        { name: "Egg Noodles", price: "$1.50" },
+        { name: "Cheesy Hashbrowns", price: "$1.50" },
       ]
     },
     2: { // Tuesday
       breakfast: [
-        { name: "Biscuit & Gravy", meta: "1 biscuit serving", price: "$1.50 · 252 cal" },
+        { name: "Breakfast Casserole", price: "$3.50" },
       ],
       lunch: [
-        { name: "Sandwich Bar", price: "$3.75" },
-        { name: "Soup", meta: "12oz / 16oz", price: "3.00/3.50" },
-        { name: "Meatloaf", price: "$2.50 · 193 cal" },
-        { name: "Roasted Broccoli", price: ".75 · 30 cal" },
-        { name: "Scalloped Potatoes", price: ".75 · 117 cal" },
+        { name: "Reuben Sandwich", price: "$4.00" },
+        { name: "Baked Fish with Garlic Butter", price: "$4.00" },
+        { name: "Capri Vegetable Blend", price: "$1.50" },
+        { name: "Tuscan Vegetable Blend", price: "$1.50" },
+        { name: "Oven Roasted Potatoes", price: "$1.50" },
+        { name: "French Fries", price: "$1.50" },
       ]
     },
     3: { // Wednesday
       breakfast: [
-        { name: "Biscuit, Egg, Cheese & Sausage Sandwich", price: "$2.50 · 341 cal" },
+        { name: "Fried Eggs", meta: "per egg", price: "$1.00" },
       ],
       lunch: [
-        { name: "Chicken Alfredo Casserole", price: "$2.50 · 295 cal" },
-        { name: "Philly Cheesesteak Sandwich", price: "$2.50 · 408 cal" },
-        { name: "Malibu Vegetable Blend", price: ".75 · 30 cal" },
-        { name: "Roasted Asparagus", price: ".75 · 30 cal" },
-        { name: "Potato Tornado", price: "$2.00 · 190 cal" },
-        { name: "Garlic Bread", price: ".75 · 110 cal" },
+        { name: "Beef Pot Roast with Brown Gravy", price: "$4.00" },
+        { name: "Polish Sausage with or without Kraut", meta: "with bun", price: "$4.00" },
+        { name: "Buttered Baby Carrots", price: "$1.50" },
+        { name: "Roasted Broccoli", price: "$1.50" },
+        { name: "Mashed Potatoes w/ Brown Gravy", price: "$1.50" },
+        { name: "Curly Fries", price: "$1.50" },
       ]
     },
     4: { // Thursday
       breakfast: [
-        { name: "Empanadas", price: "$2.50 · 210 cal" },
-        { name: "Fried Eggs", price: ".75 · 60 cal" },
+        { name: "Bagel Pizza", price: "$3.00" },
       ],
       lunch: [
-        { name: "Baked Cod", price: "$2.50 · 210 cal" },
-        { name: "Walking Tacos", meta: "Meat, cheese, lettuce, tomatoes", price: "$5.00" },
-        { name: "Capri Vegetable Blend", price: ".75 · 25 cal" },
-        { name: "Cheesy Hashbrowns", price: ".75 · 215 cal" },
+        { name: "Oven Baked Chicken", meta: "2 legs or 1 thigh/1 breast", price: "$4.00" },
+        { name: "Mushroom & Swiss Burger", price: "$4.00" },
+        { name: "Spinach Bake", price: "$1.50" },
+        { name: "Cauliflower w/ Cheese", price: "$1.50" },
+        { name: "Macaroni & Cheese", price: "$1.50" },
+        { name: "Sidewinder Fries", price: "$1.50" },
       ]
     },
     5: { // Friday
       breakfast: [
-        { name: "Blueberry Pancakes", meta: "per pancake", price: ".50" },
+        { name: "Western Omelet", price: "$3.00" },
       ],
       lunch: [
-        { name: "Marinated Pork Ribs", price: "$2.50" },
-        { name: "Tomato Basil Soup", meta: "12oz / 16oz", price: "3.00/3.50" },
-        { name: "Grilled Cheese", price: "$2.00" },
-        { name: "Garden Vegetable Blend", price: ".75 · 25 cal" },
-        { name: "Spinach Bake", price: ".75 · 217 cal" },
-        { name: "Sweet Potato Fries", price: ".75" },
+        { name: "Orange Chicken", price: "$4.00" },
+        { name: "Cook's Cleanout", meta: "Ask staff for today's selection" },
+        { name: "Garden Vegetable Blend", price: "$1.50" },
+        { name: "Roasted String Beans", price: "$1.50" },
+        { name: "Steamed White Rice", price: "$1.50" },
+        { name: "Fried Rice", price: "$1.50" },
+        { name: "Egg Rolls", price: "$1.50" },
       ]
     }
   },
 
   2: { // WEEK 2
-    1: {
+    1: { // Monday
       breakfast: [
-        { name: "English Muffin Sandwich", price: "$2.50 · 470 cal" },
+        { name: "Fried Eggs", meta: "per egg", price: "$1.00" },
       ],
       lunch: [
-        { name: "Grilled Sausage Cuts w/ Onions & Peppers", price: "$2.50 · 338 cal" },
-        { name: "Soup Bar", meta: "Potato Soup · Broccoli Cheese · White Chicken Chili", price: "3.00/3.50" },
-        { name: "Brussel Sprouts", price: ".75 · 97 cal" },
-        { name: "Malibu Vegetable Blend", price: ".75 · 30 cal" },
-        { name: "Loaded Mashed Potatoes", price: ".75 · 90 cal" },
-        { name: "Mac n Cheese", price: ".75 · 320 cal" },
+        { name: "Chicken Fried Steak", price: "$4.00" },
+        { name: "BBQ Pork Ribs / Boneless", price: "$4.00" },
+        { name: "Buttered Corn", price: "$1.50" },
+        { name: "Malibu Vegetable Blend", price: "$1.50" },
+        { name: "Mashed Potatoes with Cream Gravy", price: "$1.50" },
+        { name: "Onion Rings", price: "$1.50" },
       ]
     },
-    2: {
+    2: { // Tuesday
       breakfast: [
-        { name: "Breakfast Frittata", price: ".75 · 90 cal" },
+        { name: "Breakfast Pizza", price: "$3.50" },
       ],
       lunch: [
-        { name: "Orange Chicken", price: "$2.50 · 390 cal" },
-        { name: "BBQ Meatballs", price: "$2.50 · 290 cal" },
-        { name: "Roasted String Beans", price: ".75 · 96 cal" },
-        { name: "Glazed Baby Carrots", price: ".75 · 108 cal" },
-        { name: "White Rice / Fried Rice", price: ".75 · 151/380 cal" },
-        { name: "Egg Roll", price: ".75 · 84 cal" },
+        { name: "Cheese Ravioli with Marinara Sauce", price: "$4.00" },
+        { name: "Baked Fish", price: "$4.00" },
+        { name: "Zucchini & Squash", price: "$1.50" },
+        { name: "Meadow Vegetable Blend", price: "$1.50" },
+        { name: "Garlic Bread", price: "$1.50" },
+        { name: "Waffle Fries", price: "$1.50" },
       ]
     },
-    3: {
+    3: { // Wednesday
       breakfast: [
-        { name: "Breakfast Tornados", meta: "1 for $1.50 · 2 for $2.50", price: "" },
-        { name: "Fried Eggs", price: ".75 · 60 cal" },
+        { name: "Breakfast Croissant", meta: "Sausage, Egg & Cheese", price: "$3.50" },
       ],
       lunch: [
-        { name: "Grilled Reuben Sandwich", price: "$2.50 · 438 cal" },
-        { name: "Chili Soup with Cheese", meta: "12oz / 16oz", price: "3.00/3.50" },
-        { name: "California Vegetable Blend", price: ".75 · 30 cal" },
-        { name: "Roasted Asparagus", price: ".75 · 30 cal" },
-        { name: "Baked Potato", meta: "Butter & Sour Cream", price: "$1.25 · 90 cal" },
-        { name: "French Fries", price: ".75" },
+        { name: "Brisket / Bun", price: "$4.00" },
+        { name: "Cheese Pizza / Pepperoni Personal Pan", price: "$4.00" },
+        { name: "Brown Sugar Baby Carrots", price: "$1.50" },
+        { name: "Sicilian Vegetable Blend", price: "$1.50" },
+        { name: "Oven Potato Cubes", price: "$1.50" },
+        { name: "Macaroni & Cheese", price: "$1.50" },
       ]
     },
-    4: {
+    4: { // Thursday
       breakfast: [
-        { name: "French Toast with Warm Fruit Compote", meta: "per slice", price: ".50 · 190 cal" },
+        { name: "Empanadas", price: "$3.00" },
+        { name: "Gooey Rolls w/ Pecans", meta: "per roll", price: "$1.50" },
       ],
       lunch: [
-        { name: "Polish Sausage w/ Sauerkraut", price: "$2.50" },
-        { name: "Chicken Bacon Penne Pasta Bake", price: "$2.50 · 291 cal" },
-        { name: "Capri Vegetable Blend", price: ".75 · 25 cal" },
-        { name: "Corn with Black Beans", price: ".75 · 90 cal" },
-        { name: "Rice Pilaf", price: ".75 · 240 cal" },
-        { name: "Garlic Bread", price: ".75 · 110 cal" },
+        { name: "Breaded Chicken Breast", meta: "panko", price: "$4.00" },
+        { name: "Ham & Cheese Sliders", price: "$4.00" },
+        { name: "California Vegetable Blend", price: "$1.50" },
+        { name: "Bermuda Vegetable Blend", price: "$1.50" },
+        { name: "Curly Fries", price: "$1.50" },
+        { name: "Sweet Potato Cubes", price: "$1.50" },
       ]
     },
-    5: {
+    5: { // Friday
       breakfast: [
-        { name: "Breakfast Pizza", price: "$2.50 · 230 cal" },
+        { name: "Chocolate Chip Pancakes", meta: "per pancake", price: "$1.00" },
       ],
       lunch: [
-        { name: "Chicken Fried Steak", price: "$2.50 · 220 cal" },
-        { name: "Lemon Pepper Fish", price: "$2.50 · 177 cal" },
-        { name: "Spinach Bake", price: ".75 · 217 cal" },
-        { name: "Buttered Green Beans", price: ".75 · 24 cal" },
-        { name: "Mashed Potatoes w/ Cream Gravy", price: ".75 · 130 cal" },
-        { name: "Onion Petals", price: "$1.00 · 210 cal" },
+        { name: "Beef Stroganoff over Noodles", price: "$4.00" },
+        { name: "BLT Sandwich", price: "$4.00" },
+        { name: "Garlic Green Beans", price: "$1.50" },
+        { name: "4 Way Vegetable Blend", price: "$1.50" },
+        { name: "Tater Kegs", price: "$1.50" },
+        { name: "Egg Noodles", price: "$1.50" },
       ]
     }
   },
 
   3: { // WEEK 3
-    1: {
+    1: { // Monday
       breakfast: [
-        { name: "Breakfast Casserole", price: "$2.50 · 231 cal" },
-        { name: "Bakery Day — Variety of Rolls", meta: "Price varies" },
+        { name: "Biscuit / Sausage Gravy", meta: "1 biscuit", price: "$2.50" },
       ],
       lunch: [
-        { name: "Nacho Bar", meta: "Chips, 1 meat, 1 cheese · Beef Taco Meat or Chicken Carnita · Toppings: lettuce, tomato, jalapeños, salsa, sour cream", price: "$5.00" },
-        { name: "Cheese Quesadilla", price: "$2.50 · 317 cal" },
-        { name: "Corn with Black Beans", price: ".75 · 90 cal" },
-        { name: "Fajita Vegetable Blend", price: ".75 · 25 cal" },
-        { name: "Refried Beans", price: ".75" },
-        { name: "Spanish Rice", price: ".75" },
-      ]
-    },
-    2: {
-      breakfast: [
-        { name: "Biscuit & Gravy", meta: "1 biscuit", price: "$1.50 · 252 cal" },
-      ],
-      lunch: [
+        { name: "Grilled Cheese", price: "$2.50" },
         { name: "Tomato Soup", meta: "12oz / 16oz", price: "3.00/3.50" },
-        { name: "Grilled Cheese Sandwich", price: "$2.00 · 526 cal" },
-        { name: "Chicken Teriyaki", price: "$2.50 · 160 cal" },
-        { name: "Tuscan Vegetable Blend", price: ".75 · 30 cal" },
-        { name: "Spinach Bake", price: ".75 · 217 cal" },
-        { name: "Lo Mein Noodles", price: ".75 · 157 cal" },
+        { name: "Green Beans with Bacon", price: "$1.50" },
+        { name: "Garden Vegetable Blend", price: "$1.50" },
+        { name: "Mashed Potatoes with Gravy", price: "$1.50" },
       ]
     },
-    3: {
+    2: { // Tuesday
       breakfast: [
-        { name: "Fried Eggs", price: ".75 · 60 cal" },
+        { name: "Country Style Scrambled Eggs", meta: "per egg", price: "$1.00" },
       ],
       lunch: [
-        { name: "Cheeseburger / Bun", price: "$2.50 · 400 cal" },
-        { name: "Rotisserie Chicken", price: "$2.50 · 172 cal" },
-        { name: "Asparagus Spears", price: ".75 · 30 cal" },
-        { name: "Cheesy Cauliflower", price: ".75 · 49 cal" },
-        { name: "French Fries", price: ".75" },
-        { name: "Baked Beans", price: ".75 · 150 cal" },
+        { name: "Philly Cheesesteak Sandwich", meta: "with Queso", price: "$4.00" },
+        { name: "Sweet & Sour Pork", price: "$4.00" },
+        { name: "Sautéed Zucchini & Squash", price: "$1.50" },
+        { name: "Cream Cheese Corn", price: "$1.50" },
+        { name: "White Rice", price: "$1.50" },
+        { name: "Tater Kegs (2)", price: "$1.50" },
+        { name: "Egg Rolls", price: "$1.50" },
       ]
     },
-    4: {
+    3: { // Wednesday
       breakfast: [
-        { name: "Empanadas", price: "$2.50 · 210 cal" },
+        { name: "Tornados", price: "$2.50" },
+        { name: "Scones / Turnovers", meta: "per piece", price: "$1.50" },
       ],
       lunch: [
-        { name: "Shredded Beef Sandwich w/ BBQ Sauce", price: "$2.50 · 350 cal" },
-        { name: "General Tso's Chicken", price: "$2.50 · 170 cal" },
-        { name: "Roasted String Beans", price: ".75 · 25 cal" },
-        { name: "Buttered Corn", price: ".75 · 90 cal" },
-        { name: "Tater Tots", price: ".75 · 160 cal" },
-        { name: "White Rice", price: ".75 · 180 cal" },
-        { name: "Egg Roll", price: ".75 · 140 cal" },
+        { name: "Spaghetti with Meat Sauce", price: "$4.00" },
+        { name: "Honey Garlic Chicken Breast", price: "$4.00" },
+        { name: "Sicilian Vegetable Blend", price: "$1.50" },
+        { name: "4 Way Vegetable Blend", price: "$1.50" },
+        { name: "Lo Mein Noodles", price: "$1.50" },
+        { name: "Cheesy Breadstick", price: "$1.50" },
       ]
     },
-    5: {
+    4: { // Thursday
       breakfast: [
-        { name: "Breakfast Croissant", price: "$2.50" },
+        { name: "Sausage Breakfast Burrito", price: "$3.50" },
       ],
       lunch: [
-        { name: "French Dip Sandwich w/ Au Jus", price: "$2.50 · 397 cal" },
-        { name: "Chicken Cordon Bleu", price: "$2.50 · 310 cal" },
-        { name: "Fish Variety", price: "$2.50" },
-        { name: "Glazed Baby Carrots", price: ".75 · 115 cal" },
-        { name: "Garden Vegetable Blend", price: ".75 · 25 cal" },
-        { name: "Cheesy Hashbrowns", price: ".75 · 205 cal" },
-        { name: "Sidewinder French Fries", price: ".75 · 150 cal" },
+        { name: "Nacho Day", meta: "Chips · 1 meat · 1 cheese · tomatoes · sour cream · salsa", price: "$6.00" },
+        { name: "Chicken Cheese Quesadilla", price: "$4.50" },
+        { name: "Cheese Quesadilla", price: "$4.00" },
+        { name: "Corn w/ Black Beans", price: "$1.50" },
+        { name: "Fajita Vegetable Blend", price: "$1.50" },
+        { name: "Refried Beans", price: "$1.50" },
+        { name: "Cilantro White Rice", price: "$1.50" },
+        { name: "Spanish Rice", price: "$1.50" },
+      ]
+    },
+    5: { // Friday
+      breakfast: [
+        { name: "Fried Eggs", meta: "per egg", price: "$1.00" },
+      ],
+      lunch: [
+        { name: "French Dip Sandwich with Au Jus", price: "$4.00" },
+        { name: "Cook's Cleanout", meta: "Ask staff for today's selection" },
+        { name: "Vegetable Blend", price: "$1.50" },
+        { name: "Roasted Broccoli", price: "$1.50" },
+        { name: "Curly Fries", price: "$1.50" },
+        { name: "Sweet Potato Cubes", price: "$1.50" },
       ]
     }
   },
 
   4: { // WEEK 4
-    1: {
+    1: { // Monday
       breakfast: [
-        { name: "Bacon Breakfast Tornado", meta: "1 for $1.50 · 2 for $2.50", price: "" },
-        { name: "Sausage Breakfast Tornado", meta: "1 for $1.50 · 2 for $2.50", price: "" },
-        { name: "Scrambled Eggs", price: ".50" },
+        { name: "Fruit Pancakes", meta: "with margarine & syrup", price: "$1.00" },
       ],
       lunch: [
-        { name: "Cheeseburger Sliders (2)", price: "$2.50 · 615 cal" },
-        { name: "Chicken Spaghetti", price: "$2.50 · 454 cal" },
-        { name: "Meadow Vegetable Blend", price: ".75 · 30 cal" },
-        { name: "Baby Carrots with Butter", price: ".75 · 58 cal" },
-        { name: "Baked Potato Casserole", price: ".75 · 347 cal" },
-        { name: "Garlic Bread", price: ".75 · 110 cal" },
+        { name: "Walking Tacos", meta: "Chip bag · meat · cheese · lettuce · tomato · sour cream · salsa", price: "$6.00" },
+        { name: "Citrus BBQ Chicken Breast", price: "$4.00" },
+        { name: "Corn w/ Black Beans", price: "$1.50" },
+        { name: "4 Way Vegetable Blend", price: "$1.50" },
+        { name: "Spanish Rice", price: "$1.50" },
+        { name: "Scalloped Potatoes", price: "$1.50" },
       ]
     },
-    2: {
+    2: { // Tuesday
       breakfast: [
-        { name: "Bagel Pizza", price: "$2.50 · 470 cal" },
+        { name: "Breakfast Bowl", meta: "Eggs · hashbrowns · veggies · meat · cheese · salsa", price: "$3.50" },
       ],
       lunch: [
-        { name: "Sesame Garlic Beef", price: "$2.50 · 304 cal" },
-        { name: "Orange Chicken", price: "$2.50 · 390 cal" },
-        { name: "Caribbean Vegetable Blend", price: ".75 · 30 cal" },
-        { name: "Asparagus", price: ".75 · 30 cal" },
-        { name: "Lo Mein Noodles", price: ".75 · 157 cal" },
-        { name: "White Rice", price: ".75 · 152 cal" },
-        { name: "Mini Egg Rolls (2)", price: "$1.00 · 180 cal" },
+        { name: "Sliced Brisket / Bun", price: "$5.00" },
+        { name: "Chicken Tenders (4)", price: "$4.00" },
+        { name: "Asparagus Spears", price: "$1.50" },
+        { name: "Broccoli w/ Cheese", price: "$1.50" },
+        { name: "Baked Beans", price: "$1.50" },
+        { name: "Mashed Potatoes with Cream Gravy", price: "$1.50" },
       ]
     },
-    3: {
+    3: { // Wednesday
       breakfast: [
-        { name: "Breakfast Bowl", price: "$2.50" },
+        { name: "Fried Eggs", meta: "per egg", price: "$1.00" },
       ],
       lunch: [
-        { name: "Chili Soup w/ Shredded Cheese", meta: "12oz / 16oz", price: "3.00/3.50" },
-        { name: "BLT Sandwich", price: "$2.50" },
-        { name: "Corn Casserole", price: ".75 · 274 cal" },
-        { name: "4 Way Vegetable Blend", price: ".75 · 30 cal" },
-        { name: "Roasted Potato Cubes", price: ".75" },
-        { name: "French Fries", price: ".75" },
+        { name: "Bacon Cheeseburger / Bun", price: "$4.00" },
+        { name: "Hot Dog / Bun", meta: "all beef", price: "$3.50" },
+        { name: "Tuscan Vegetable Blend", price: "$1.50" },
+        { name: "Green Beans", price: "$1.50" },
+        { name: "French Fries", price: "$1.50" },
+        { name: "Onion Petals", price: "$1.50" },
       ]
     },
-    4: {
+    4: { // Thursday
       breakfast: [
-        { name: "Fried Eggs", price: ".75 · 60 cal" },
-        { name: "Waffles with Butter & Syrup", meta: "per 2 waffles", price: ".75 · 140 cal" },
+        { name: "Breakfast Casserole", price: "$3.50" },
       ],
       lunch: [
-        { name: "Cook's Cleanout", meta: "Ask staff for today's selection" },
-        { name: "Empanadas", meta: "Beef & Cheese / Chicken & Cheese / Cheesy Pepperoni", price: "$2.50 each · 200–240 cal" },
-        { name: "Dessert Empanada — Apple", price: "$2.50 · 200 cal" },
-        { name: "Sicilian Vegetable Blend", price: ".75 · 25 cal" },
-        { name: "Cream Cheese Corn", price: ".75 · 60 cal" },
+        { name: "Chicken Fried Steak with Gravy", price: "$4.00" },
+        { name: "Lasagna", price: "$4.00" },
+        { name: "Buttered Corn", price: "$1.50" },
+        { name: "Roasted String Beans", price: "$1.50" },
+        { name: "Mashed Potatoes / Gravy", price: "$1.50" },
+        { name: "Cheese Garlic Bread", price: "$1.50" },
       ]
     },
-    5: {
+    5: { // Friday
       breakfast: [
-        { name: "Southwest Omelet Bake", price: "$2.50 · 304 cal" },
+        { name: "Empanada", price: "$3.00" },
+        { name: "Tornados", price: "$2.50" },
       ],
       lunch: [
-        { name: "Beef Brisket / Bun", price: "$3.50 · 214 cal" },
-        { name: "Chicken Tacos (2)", meta: "Lettuce, tomatoes, shredded cheese", price: "$2.50 · 360 cal" },
-        { name: "Spinach Bake", price: ".75 · 225 cal" },
-        { name: "Capri Vegetable Blend", price: ".75 · 52 cal" },
-        { name: "Mac n Cheese", price: ".75 · 237 cal" },
-        { name: "Spanish Rice", price: ".75 · 95 cal" },
+        { name: "Chicken Spaghetti", price: "$4.00" },
+        { name: "BBQ Meatballs (4)", price: "$4.00" },
+        { name: "Malibu Vegetable Blend", price: "$1.50" },
+        { name: "Caribbean Vegetable Blend", price: "$1.50" },
+        { name: "Au Gratin Potatoes", price: "$1.50" },
+        { name: "Garlic Cheese Biscuit", price: "$1.00" },
       ]
     }
   }
@@ -550,8 +551,8 @@ const MENU = {
 
 const DAILY_ITEMS = {
   breakfast: [
-    { name: "Bacon", meta: "per slice", price: ".50 · 60 cal" },
-    { name: "Sausage Links", meta: "per link", price: ".50 · 170 cal" },
+    { name: "Bacon", meta: "per slice", price: "$1.00" },
+    { name: "Sausage", meta: "per link or patty", price: "$1.00" },
     { name: "Yogurt Parfait", meta: "per ounce", price: ".45" },
   ],
   lunch: [
@@ -565,8 +566,8 @@ const DAILY_ITEMS = {
 
 // Week 1 anchor: The Monday of the current week 1.
 // Today is Tuesday March 18, 2026 = Week 1, Tuesday
-// So Monday of this week = March 17, 2026
-const WEEK1_MONDAY = new Date(2026, 2, 16); // March 16, 2026 (month is 0-indexed)
+// Tuesday June 30 2026 = Week 1 Tuesday, so Monday of that week = June 29 2026
+const WEEK1_MONDAY = new Date(2026, 5, 29); // June 29, 2026 (month is 0-indexed)
 
 function getWeekAndDay(now) {
   const msPerDay = 86400000;
@@ -775,11 +776,15 @@ function renderMenu() {
     ? `${dayName} ${mealLabel} — Coming Up`
     : `${dayName} ${mealLabel}`;
 
+  const footnoteExpiry = new Date(2026, 6, 10); // July 10, 2026
+  const showFootnote = now <= footnoteExpiry;
+
   main.innerHTML = `
     <div class="page-title">${pageTitle}</div>
     <div class="menu-columns">
       ${buildColumns(allItems)}
     </div>
+    ${showFootnote ? `<div style="font-size: 20px; color: #333; font-style: italic; margin-top: 14px; padding-top: 12px; border-top: 1px solid #eee;">New pricing as of 6/30/26 &nbsp;·&nbsp; Associates receive discount at the register</div>` : ''}
   `;
 }
 
