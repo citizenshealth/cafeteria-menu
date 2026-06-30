@@ -148,7 +148,7 @@
     display: flex;
     align-items: baseline;
     justify-content: space-between;
-    padding: 11px 0;
+    padding: 9px 0;
     border-bottom: 1px dotted #ccc;
     gap: 16px;
   }
@@ -164,15 +164,15 @@
 
   .row-name {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 44px;
+    font-size: 40px;
     font-weight: 700;
     font-style: normal;
     color: #000000;
-    line-height: 1.1;
+    line-height: 1.05;
   }
 
   .row-desc {
-    font-size: 26px;
+    font-size: 22px;
     color: var(--muted);
     margin-top: 2px;
   }
@@ -186,13 +186,13 @@
   }
 
   .row-cal {
-    font-size: 26px;
+    font-size: 22px;
     color: var(--light-gray);
   }
 
   .row-price {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 50px;
+    font-size: 44px;
     font-weight: 800;
     color: var(--red);
     line-height: 1;
@@ -784,7 +784,7 @@ function renderMenu() {
     <div class="menu-columns">
       ${buildColumns(allItems)}
     </div>
-    ${showFootnote ? `<div style="font-size: 26px; color: #333; font-style: italic; margin-top: 10px; padding-top: 10px; border-top: 1px solid #eee; white-space: normal; max-width: 100%;">New pricing as of 6/30/26 &nbsp;·&nbsp; Associates receive discount at the register</div>` : ''}
+    ${showFootnote ? `<div style="font-size: 26px; color: #333; font-style: italic; margin-top: 10px; padding-top: 10px; border-top: 1px solid #eee; width: 100%; box-sizing: border-box; word-wrap: break-word; overflow-wrap: break-word; white-space: normal;">New pricing as of 6/30/26 · Associates receive discount at the register</div>` : ''}
   `;
 }
 
