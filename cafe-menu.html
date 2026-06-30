@@ -553,10 +553,10 @@ const DAILY_ITEMS = {
   breakfast: [
     { name: "Bacon", meta: "per slice", price: "$1.00" },
     { name: "Sausage", meta: "per link or patty", price: "$1.00" },
-    { name: "Yogurt Parfait", meta: "per ounce", price: ".45" },
+    { name: "Yogurt Parfait", meta: "per ounce", price: ".50" },
   ],
   lunch: [
-    { name: "Salad Bar", meta: "per ounce", price: ".45" },
+    { name: "Salad Bar", meta: "per ounce", price: ".50" },
   ]
 };
 
@@ -784,7 +784,7 @@ function renderMenu() {
     <div class="menu-columns">
       ${buildColumns(allItems)}
     </div>
-    ${showFootnote ? `<div style="font-size: 28px; color: #333; font-style: italic; margin-top: 16px; padding-top: 14px; border-top: 1px solid #eee;">New pricing as of 6/30/26 &nbsp;·&nbsp; Associates receive discount at the register</div>` : ''}
+    ${showFootnote ? `<div style="font-size: 36px; color: #333; font-style: italic; margin-top: 16px; padding-top: 16px; border-top: 1px solid #eee; line-height: 1.4;">New pricing as of 6/30/26<br>Associates receive discount at the register</div>` : ''}
   `;
 }
 
