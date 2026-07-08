@@ -372,7 +372,9 @@ const MENU = {
       ],
       lunch: [
         { name: "Brisket / Bun", price: "$6.00" },
-        { name: "Cheese Pizza / Pepperoni Personal Pan", price: "$4.00" },
+        { name: "Cheese Pizza", price: "$5.00" },
+        { name: "Pepperoni Pizza", price: "$5.50" },
+        { name: "Gluten Free Pizza", price: "$6.00" },
         { name: "Brown Sugar Baby Carrots", price: "$1.50" },
         { name: "Sicilian Vegetable Blend", price: "$1.50" },
         { name: "Oven Potato Cubes", price: "$1.50" },
@@ -796,7 +798,7 @@ function renderMenu() {
     ? `${dayName} ${mealLabel} — Coming Up`
     : `${dayName} ${mealLabel}`;
 
-  const footnoteExpiry = new Date(2026, 6, 10); // July 10, 2026
+  const footnoteExpiry = new Date(2026, 6, 7); // Expired July 7, 2026
   const showFootnote = now <= footnoteExpiry;
 
   main.innerHTML = `
