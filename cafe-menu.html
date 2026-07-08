@@ -103,7 +103,7 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    padding: 24px 80px 14px;
+    padding: 20px 80px 14px;
     overflow: hidden;
   }
 
@@ -245,7 +245,8 @@
 </head>
 <body>
 
-<div class="header">
+<div class="header" style="justify-content: space-between;">
+  <div id="meal-title-header" style="font-family: 'Barlow Condensed', sans-serif; font-size: 52px; font-weight: 800; color: white; line-height: 1;"></div>
   <div class="header-info">
     <div class="header-date" id="date-display"></div>
     <div class="header-clock" id="clock-display"></div>
@@ -786,22 +787,19 @@ function renderMenu() {
   const allItems = [...items, ...daily];
 
   banner.className = `meal-banner ${mealType}`;
-  if (serviceStatus === 'breakfast-preview')      banner.textContent = '☀️  Breakfast  ·  Service begins at 7:45 AM';
-  else if (serviceStatus === 'breakfast-open')    banner.textContent = '☀️  Breakfast  ·  Now Serving  ·  Until 9:30 AM';
-  else if (serviceStatus === 'lunch-preview')     banner.textContent = '🍽️  Lunch  ·  Coming up at 11:30 AM';
-  else if (serviceStatus === 'lunch-open')        banner.textContent = '🍽️  Lunch  ·  Now Serving  ·  Until 1:30 PM';
-
   const dayName = DAY_NAMES[now.getDay()];
   const mealLabel = mealType === 'breakfast' ? 'Breakfast' : 'Lunch';
-  const pageTitle = serviceStatus.includes('preview')
-    ? `${dayName} ${mealLabel} — Coming Up`
-    : `${dayName} ${mealLabel}`;
+  const mealTitleEl = document.getElementById('meal-title-header');
+  if (mealTitleEl) mealTitleEl.textContent = `${dayName} ${mealLabel}`;
 
+  if (serviceStatus === 'breakfast-preview')      banner.textContent = `☀️  Service begins at 7:45 AM`;
+  else if (serviceStatus === 'breakfast-open')    banner.textContent = `☀️  Now Serving  ·  Until 9:30 AM`;
+  else if (serviceStatus === 'lunch-preview')     banner.textContent = `🍽️  Coming up at 11:30 AM`;
+  else if (serviceStatus === 'lunch-open')        banner.textContent = `🍽️  Now Serving  ·  Until 1:30 PM`;
   const footnoteExpiry = new Date(2026, 6, 7); // Expired July 7, 2026
   const showFootnote = now <= footnoteExpiry;
 
   main.innerHTML = `
-    <div class="page-title">${pageTitle}</div>
     <div class="menu-columns">
       ${buildColumns(allItems, showFootnote)}
     </div>
