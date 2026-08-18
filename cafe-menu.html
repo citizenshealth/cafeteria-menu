@@ -595,9 +595,9 @@ function getMealType(now) {
   const m = now.getMinutes();
   const totalMin = h * 60 + m;
   const breakfastDisplay = 7 * 60;       // 7:00 AM — start showing breakfast
-  const breakfastEnd     = 9 * 60 + 30;  // 9:30 AM — breakfast ends
-  const lunchPreview     = 9 * 60 + 30;  // 9:30 AM — start showing lunch
-  const lunchEnd         = 13 * 60 + 30; // 1:30 PM — lunch ends
+  const breakfastEnd     = 9 * 60 + 15;  // 9:15 AM — breakfast ends
+  const lunchPreview     = 9 * 60 + 15;  // 9:15 AM — start showing lunch
+  const lunchEnd         = 13 * 60 + 15; // 1:15 PM — lunch ends
 
   if (totalMin >= breakfastDisplay && totalMin < breakfastEnd) return 'breakfast';
   if (totalMin >= lunchPreview && totalMin < lunchEnd) return 'lunch';
@@ -606,10 +606,11 @@ function getMealType(now) {
 
 function getServiceStatus(now) {
   const totalMin = now.getHours() * 60 + now.getMinutes();
-  if (totalMin >= 7 * 60 && totalMin < 7 * 60 + 45) return 'breakfast-preview';
-  if (totalMin >= 7 * 60 + 45 && totalMin < 9 * 60 + 30) return 'breakfast-open';
-  if (totalMin >= 9 * 60 + 30 && totalMin < 11 * 60 + 30) return 'lunch-preview';
-  if (totalMin >= 11 * 60 + 30 && totalMin < 13 * 60 + 30) return 'lunch-open';
+  if (totalMin >= 7 * 60 && totalMin < 7 * 60 + 45)   return 'breakfast-preview';
+  if (totalMin >= 7 * 60 + 45 && totalMin < 9 * 60 + 15)  return 'breakfast-open';
+  if (totalMin >= 9 * 60 + 15 && totalMin < 11 * 60)   return 'lunch-preview';
+  if (totalMin >= 11 * 60 && totalMin < 11 * 60 + 30)  return 'lunch-salad';
+  if (totalMin >= 11 * 60 + 30 && totalMin < 13 * 60 + 15) return 'lunch-open';
   return 'closed';
 }
 
@@ -657,13 +658,13 @@ function renderMenu() {
     const isFriday = now.getDay() === 5;
     if (totalMin < 7 * 60) {
       banner.textContent = 'Cafeteria Closed';
-      main.innerHTML = closedHTML("Cafeteria Hours", "Breakfast 7:45–9:30 AM", "Lunch 11:30 AM–1:30 PM");
+      main.innerHTML = closedHTML("Cafeteria Hours", "Breakfast 7:45–9:15 AM", "Lunch 11:00 AM–1:15 PM");
     } else if (isFriday) {
       banner.textContent = '';
       main.innerHTML = closedHTML("Have a Great Weekend!", "", "");
     } else {
       banner.textContent = '';
-      main.innerHTML = closedHTML("See You Tomorrow", "Breakfast 7:45–9:30 AM", "Lunch 11:30 AM–1:30 PM");
+      main.innerHTML = closedHTML("See You Tomorrow", "Breakfast 7:45–9:15 AM", "Lunch 11:00 AM–1:15 PM");
     }
     return;
   }
@@ -825,9 +826,10 @@ function renderMenu() {
   if (mealTitleEl) mealTitleEl.textContent = `${dayName} ${mealLabel}`;
 
   if (serviceStatus === 'breakfast-preview')      banner.textContent = `☀️  Service begins at 7:45 AM`;
-  else if (serviceStatus === 'breakfast-open')    banner.textContent = `☀️  Now Serving  ·  Until 9:30 AM`;
-  else if (serviceStatus === 'lunch-preview')     banner.textContent = `🍽️  Coming up at 11:30 AM`;
-  else if (serviceStatus === 'lunch-open')        banner.textContent = `🍽️  Now Serving  ·  Until 1:30 PM`;
+  else if (serviceStatus === 'breakfast-open')    banner.textContent = `☀️  Now Serving  ·  Until 9:15 AM`;
+  else if (serviceStatus === 'lunch-preview')     banner.textContent = `🍽️  Salad Bar opens at 11:00 AM  ·  Hot food at 11:30 AM`;
+  else if (serviceStatus === 'lunch-salad')       banner.textContent = `🍽️  Salad Bar Now Open  ·  Hot food begins at 11:30 AM`;
+  else if (serviceStatus === 'lunch-open')        banner.textContent = `🍽️  Now Serving  ·  Until 1:15 PM`;
   const footnoteExpiry = new Date(2026, 6, 7); // Expired July 7, 2026
   const showFootnote = now <= footnoteExpiry;
 
